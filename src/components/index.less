@@ -1,0 +1,34 @@
+.tree {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 70%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #eee;
+  .tree-nodes {
+    position: relative;
+    overflow: hidden;
+    .tree-node {
+      .inner {
+        font-size: 20px;
+        position: relative;
+        cursor: pointer;
+        padding-left: 10px;
+        .caret-right::before {
+          content: "\25B8";
+        }
+        .caret-down::before {
+          content: "\25BE";
+        }
+        .content {
+          padding: 4px 5px;
+        }
+      }
+      .children {
+        padding-left: 20px;
+      }
+    }
+  }
+}
