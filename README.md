@@ -9,3 +9,4 @@ cnpm i typescript ts-loader source-map-loader style-loader less-loader less file
 2、递归 key，存到 keyNodeMap
 3、打开箭头向下，展示文件打开图标，关闭箭头向右，展示关闭图标
 4、新增 input 框类型 checkbox onChange 事件，实现 全选，反选
+5、模拟接口获取子节点

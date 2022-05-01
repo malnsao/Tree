@@ -41,9 +41,35 @@ class Tree extends React.Component<Prpos, State> {
   onCollapse = (key: string) => {
     let data = this.keyNodeMap[key];
     if (data) {
-      data.collapsed = !data.collapsed;
-      data.children = data.children || [];
-      this.setState({ data: this.state.data });
+      let { children } = data;
+      if (children) {
+        data.collapsed = !data.collapsed;
+        data.children = data.children || [];
+        this.setState({ data: this.state.data });
+      } else {
+        data.loading = true;
+        this.setState({ data: this.state.data });
+        setTimeout(() => {
+          data.children = [
+            {
+              name: data.name + "的儿子1",
+              key: `${data.key}-1`,
+              type: "folder",
+              collapsed: true,
+            },
+            {
+              name: data.name + "的儿子2",
+              key: `${data.key}-2`,
+              type: "folder",
+              collapsed: true,
+            },
+          ];
+          data.loading = false;
+          data.collapsed = false;
+          this.buildKeyMap();
+          this.setState({ data: this.state.data });
+        }, 2000);
+      }
     }
   };
   onCheck = (key: string) => {

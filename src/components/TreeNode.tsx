@@ -4,6 +4,7 @@ import "./index.less";
 import file from "../assets/file.png";
 import openedFolder from "../assets/opened-folder.png";
 import closedFolder from "../assets/closed-folder.png";
+import loadingSrc from "../assets/loading.png";
 
 interface Prpos {
   data: TreeData;
@@ -18,7 +19,7 @@ class TreeNode extends React.Component<Prpos> {
 
   render() {
     let {
-      data: { name, children, key, collapsed, checked },
+      data: { name, children, key, collapsed, checked, loading },
       onCollapse,
       onCheck,
     } = this.props;
@@ -38,7 +39,9 @@ class TreeNode extends React.Component<Prpos> {
         icon = file;
       }
     } else {
-      caret = (
+      caret = loading ? (
+        <img src={loadingSrc} style={{ width: 14 }} />
+      ) : (
         <span
           className={`collapse caret-right`}
           onClick={() => onCollapse(key)}
